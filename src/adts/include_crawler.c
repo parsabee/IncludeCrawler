@@ -1,3 +1,8 @@
+/*
+ * created by Parsa Bagheri
+ * this software uses open source material
+ * I am grateful for the contirbutions of these developers who
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -35,7 +40,7 @@ static void freeLL(void *a){
 	 */
 	if(a != NULL){
 		TSLinkedList *ll = (TSLinkedList *) a;
-		ll->destroy(ll, NULL);
+		ll->destroy(ll, free);
 	}
 }
 
@@ -48,8 +53,27 @@ static void freeArg(char **L){
 		free(L[1]);
 		free(L);
 	}
-
 }
+
+void cleanUp(){
+	/*
+	 * Clean-Up routine
+	 */
+	if(directories != NULL){
+		int i;
+		for(i=0; i<dir_count; i++){
+			free(directories[i]);
+		}
+		free(directories);
+	}
+	if(work_q != NULL){
+		work_q->destroy(work_q, NULL);
+	}
+	if(the_table != NULL){
+		the_table->destroy(the_table, freeLL);
+	}
+}
+
 static int scmp(void *a, void *b) {
 	/*
 	 * static funciton used for comparison function in hashmap
@@ -173,8 +197,6 @@ int process(char *afile, const TSLinkedList *ll, const TSHashMap *hm, const TSUQ
 	return 1;
 }
 
-
-
 int getDirNum(const char *path){
 	/*
 	 * helper function to get the number of directories sepereated by ":" in a string
@@ -193,6 +215,7 @@ int getDirNum(const char *path){
 		count++;
 	return count;
 }
+
 char *addSlash(char *argv, int arg_len){
 	/*
 	 * Helper funciton to add a slash to the end of the path
@@ -257,6 +280,7 @@ char *addSlash(char *argv, int arg_len){
 	}
 	
 }
+
 char **getDirectories(int argc, char *argv[]){
 	/*
 	 * Helper function that returns a char* array containing the directories to be processed
@@ -282,7 +306,6 @@ char **getDirectories(int argc, char *argv[]){
 		else
 			break;
 	}
-
 	file_count = argc - i;
 	if(file_count == 0){
 		fprintf(stderr, "%s\n", USAGE); /*Invalid argument*/
@@ -300,6 +323,7 @@ char **getDirectories(int argc, char *argv[]){
 	/*now we have the count of all the directories to be processed*/
 	char **directories = (char **)malloc(sizeof(char *)*dir_count);
 	if(directories != NULL){
+
 		/*current directory first*/
 		char *cur_dir = "./";
 		directories[0] = strdup(cur_dir);
@@ -361,25 +385,6 @@ int getObj(char *afile, char *obj){
 	}
 }
 
-void cleanUp(){
-	/*
-	 * Clean-Up routine
-	 */
-	if(directories != NULL){
-		int i;
-		for(i=0; i<dir_count; i++){
-			free(directories[i]);
-		}
-		free(directories);
-	}
-	if(work_q != NULL){
-		work_q->destroy(work_q, NULL);
-	}
-	if(the_table != NULL){
-		the_table->destroy(the_table, freeLL);
-	}
-}
-
 void *run(){
 	char *afile;
 	const TSLinkedList *deps;
@@ -388,11 +393,7 @@ void *run(){
 			if(the_table->get(the_table, afile, (void **)&deps)){
 				if(!process(afile, deps, the_table, work_q))
 					fprintf(stderr, "No such file[s]\n");
-				
-				if(!the_table->put(the_table, afile, (void *)deps, NULL)){
-					fprintf(stderr, "[MALLOC FAILURE] Failed to put the dependecy list back in the table\n");
-					break;
-				}
+
 			}
 		}
 		else {
@@ -425,6 +426,7 @@ int main(int argc, char *argv[]){
 			cleanUp();
 			exit(0);
 		}
+
 		the_table = TSHashMap_create(0, 0.0); /*construct the map structure*/
 		if(the_table == NULL){
 			fprintf(stderr, "[MALLOC FAILURE] Failed to make the table\n");
@@ -446,20 +448,25 @@ int main(int argc, char *argv[]){
 					cleanUp();
 					exit(0);
 				}
-				obj_deps->addLast(obj_deps, (void *)argv[i]);
-				if(!the_table->put(the_table, obj, (void *)obj_deps, NULL)){
-					fprintf(stderr, "[MALLOC FAILURE] Failed to add to the table, already present\n");
+				char *arg = strdup(argv[i]);
+				if (arg != NULL) {
+					obj_deps->addLast(obj_deps, (void *)arg);
+					if(!the_table->put(the_table, obj, (void *)obj_deps, NULL)){
+						fprintf(stderr, "[MALLOC FAILURE] Failed to add to the table, already present\n");
+					}
+					const TSLinkedList *ext_deps = TSLinkedList_create();
+					if(ext_deps == NULL){
+						fprintf(stderr, "[MALLOC FAILURE] Failed to make dependecy list\n");
+						cleanUp();
+						exit(0);
+					}
+					if(!the_table->put(the_table, argv[i], (void *)ext_deps, NULL)){
+						fprintf(stderr, "[MALLOC FAILURE] Failed to add to the table, already present\n");
+					}
+					work_q->add(work_q, (void *)arg);
 				}
-				const TSLinkedList *ext_deps = TSLinkedList_create();
-				if(ext_deps == NULL){
-					fprintf(stderr, "[MALLOC FAILURE] Failed to make dependecy list\n");
-					cleanUp();
-					exit(0);
-				}
-				if(!the_table->put(the_table, argv[i], (void *)ext_deps, NULL)){
-					fprintf(stderr, "[MALLOC FAILURE] Failed to add to the table, already present\n");
-				}
-				work_q->add(work_q, (void *)argv[i]);
+				else 
+					fprintf(stderr, "[MALLOC FAILURE]\n");
 			}
 		}
 		/*at this point, we have all the .o's, .c's, .l's, and .y's in the_table*/
@@ -488,6 +495,7 @@ int main(int argc, char *argv[]){
 		for(i=0; i<nthreads; i++)
 			if(pthread_join(tids[i], NULL) != 0)
 				fprintf(stderr, "Failed to join threads\n");
+
 		
 		for(i=fstart; i<argc; i++){
 			if (!getObj(argv[i], obj)) {
