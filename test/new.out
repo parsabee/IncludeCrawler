@@ -1,0 +1,89 @@
+g_01.o: g_01.y i_25.h i_53.h i_03.h i_07.h i_30.h i_51.h i_12.h i_52.h i_33.h i_01.h i_10.h i_41.h i_49.h i_02.h i_46.h
+g_02.o: g_02.y i_60.h i_51.h i_45.h i_28.h i_56.h i_33.h i_04.h i_29.h
+l_01.o: l_01.l i_33.h
+s_01.o: s_01.c i_60.h i_44.h i_46.h i_04.h i_51.h i_15.h i_33.h i_29.h i_16.h
+s_02.o: s_02.c i_02.h i_52.h i_51.h i_03.h i_41.h i_12.h i_46.h i_30.h i_07.h i_53.h i_49.h i_25.h
+s_03.o: s_03.c i_02.h i_52.h i_25.h i_53.h i_30.h i_03.h i_33.h i_49.h i_51.h i_10.h i_01.h i_46.h i_12.h i_07.h
+s_04.o: s_04.c i_07.h i_53.h i_03.h i_12.h i_52.h i_51.h i_33.h i_01.h i_10.h i_41.h i_56.h i_45.h i_20.h i_25.h i_30.h i_02.h i_44.h i_42.h i_46.h i_50.h i_49.h i_04.h i_35.h i_28.h
+s_05.o: s_05.c
+s_06.o: s_06.c i_05.h i_06.h i_33.h i_11.h i_48.h i_54.h
+s_07.o: s_07.c i_06.h i_11.h i_05.h i_48.h i_54.h
+s_08.o: s_08.c i_46.h i_04.h i_44.h
+s_09.o: s_09.c i_60.h i_44.h i_46.h i_04.h i_21.h i_51.h i_08.h i_33.h i_29.h
+s_10.o: s_10.c i_08.h i_21.h i_51.h i_44.h i_04.h i_46.h
+s_11.o: s_11.c
+s_12.o: s_12.c i_10.h i_33.h i_07.h i_53.h i_25.h
+s_13.o: s_13.c i_46.h
+s_14.o: s_14.c i_11.h i_33.h
+s_15.o: s_15.c i_12.h i_07.h i_52.h i_51.h i_33.h i_03.h i_53.h i_25.h i_02.h i_30.h i_46.h i_49.h
+s_16.o: s_16.c i_13.h i_51.h i_44.h i_60.h i_28.h i_45.h i_31.h i_04.h i_46.h i_33.h i_29.h i_56.h i_17.h
+s_17.o: s_17.c i_14.h
+s_18.o: s_18.c i_14.h i_46.h i_04.h
+s_19.o: s_19.c i_04.h i_60.h i_44.h i_46.h i_51.h i_15.h i_39.h i_18.h i_40.h i_33.h i_29.h i_16.h
+s_20.o: s_20.c i_16.h i_51.h i_39.h i_18.h i_40.h
+s_21.o: s_21.c
+s_22.o: s_22.c i_51.h i_44.h i_04.h i_46.h
+s_23.o: s_23.c i_17.h
+s_24.o: s_24.c i_18.h i_54.h
+s_25.o: s_25.c i_19.h
+s_26.o: s_26.c i_19.h i_46.h i_04.h
+s_27.o: s_27.c i_04.h i_60.h i_44.h i_46.h i_51.h i_33.h i_29.h
+s_28.o: s_28.c i_20.h i_32.h i_60.h i_44.h i_45.h i_37.h i_22.h i_50.h i_17.h i_42.h i_46.h i_54.h i_02.h i_52.h i_35.h i_55.h i_33.h i_04.h i_29.h i_56.h i_28.h i_12.h i_51.h i_07.h i_53.h i_25.h
+s_29.o: s_29.c i_04.h i_60.h i_44.h i_46.h i_33.h i_29.h
+s_30.o: s_30.c i_04.h i_60.h i_20.h i_44.h i_46.h i_32.h i_51.h i_33.h i_29.h i_42.h i_50.h i_02.h i_45.h i_55.h i_35.h i_28.h i_12.h i_56.h i_07.h i_53.h i_25.h
+s_31.o: s_31.c i_21.h
+s_32.o: s_32.c i_22.h i_55.h i_17.h i_50.h i_45.h i_60.h i_36.h i_56.h i_44.h i_46.h i_42.h i_52.h i_41.h i_13.h i_28.h i_35.h i_33.h i_04.h i_29.h i_02.h i_07.h i_31.h i_51.h i_12.h i_53.h i_25.h
+s_33.o: s_33.c
+s_34.o: s_34.c i_46.h i_04.h i_51.h
+s_35.o: s_35.c i_04.h i_60.h i_44.h i_46.h i_51.h i_23.h i_33.h i_29.h i_16.h
+s_36.o: s_36.c i_33.h i_46.h i_04.h i_51.h
+s_38.o: s_38.c i_33.h
+s_39.o: s_39.c i_24.h
+s_40.o: s_40.c i_25.h i_33.h
+s_41.o: s_41.c i_43.h i_21.h i_24.h i_46.h i_04.h
+s_42.o: s_42.c i_04.h i_60.h i_44.h i_46.h i_51.h i_26.h i_21.h i_33.h i_29.h i_27.h
+s_43.o: s_43.c i_28.h i_33.h i_60.h i_04.h i_29.h
+s_44.o: s_44.c i_31.h i_09.h i_60.h i_13.h i_17.h i_51.h i_28.h i_45.h i_44.h i_33.h i_04.h i_29.h i_56.h i_46.h
+s_45.o: s_45.c i_33.h i_32.h i_35.h i_50.h i_55.h i_51.h i_28.h i_45.h i_44.h i_46.h i_56.h i_04.h
+s_46.o: s_46.c i_33.h
+s_47.o: s_47.c i_34.h i_51.h
+s_48.o: s_48.c i_34.h i_46.h i_04.h i_51.h
+s_49.o: s_49.c i_36.h i_60.h i_28.h i_44.h i_45.h i_50.h i_55.h i_51.h i_32.h i_35.h i_33.h i_04.h i_29.h i_46.h i_56.h
+s_50.o: s_50.c i_02.h i_52.h i_25.h i_53.h i_30.h i_03.h i_33.h i_49.h i_51.h i_10.h i_01.h i_46.h i_12.h i_07.h
+s_51.o: s_51.c i_37.h i_45.h i_56.h i_60.h i_51.h i_33.h i_04.h i_29.h
+s_52.o: s_52.c i_09.h i_31.h i_38.h i_45.h i_37.h i_60.h i_17.h i_51.h i_28.h i_44.h i_56.h i_33.h i_04.h i_29.h i_46.h
+s_53.o: s_53.c i_04.h i_60.h i_44.h i_46.h i_51.h i_33.h i_29.h
+s_54.o: s_54.c i_04.h i_60.h i_44.h i_46.h i_51.h i_33.h i_29.h
+s_55.o: s_55.c i_38.h i_44.h i_04.h i_46.h
+s_56.o: s_56.c i_39.h
+s_57.o: s_57.c i_40.h
+s_58.o: s_58.c i_41.h i_53.h i_07.h i_33.h i_20.h i_50.h i_36.h i_52.h i_55.h i_56.h i_25.h i_44.h i_42.h i_46.h i_02.h i_45.h i_35.h i_28.h i_04.h i_12.h i_51.h
+s_59.o: s_59.c i_42.h i_17.h i_33.h i_46.h
+s_60.o: s_60.c i_04.h i_60.h i_44.h i_46.h i_33.h i_29.h
+s_61.o: s_61.c i_04.h i_60.h i_44.h i_46.h i_33.h i_29.h
+s_62.o: s_62.c i_04.h i_46.h
+s_63.o: s_63.c i_43.h
+s_64.o: s_64.c i_44.h i_60.h i_56.h i_45.h i_28.h i_17.h i_04.h i_46.h i_33.h i_29.h
+s_65.o: s_65.c i_04.h i_60.h i_44.h i_46.h i_33.h i_29.h
+s_66.o: s_66.c i_46.h
+s_67.o: s_67.c i_46.h
+s_68.o: s_68.c i_45.h i_60.h i_51.h i_29.h i_56.h i_33.h i_04.h
+s_69.o: s_69.c i_46.h i_47.h i_54.h i_11.h i_06.h i_05.h i_33.h i_48.h i_29.h
+s_70.o: s_70.c i_48.h i_33.h i_54.h
+s_71.o: s_71.c i_49.h i_33.h i_03.h i_07.h i_30.h i_53.h i_25.h i_02.h i_12.h i_46.h
+s_72.o: s_72.c i_04.h i_60.h i_20.h i_44.h i_32.h i_33.h i_29.h i_42.h i_46.h i_50.h i_02.h i_45.h i_55.h i_35.h i_28.h i_12.h i_56.h i_51.h i_07.h i_53.h i_25.h
+s_73.o: s_73.c
+s_74.o: s_74.c i_04.h i_60.h i_44.h i_46.h i_33.h i_29.h
+s_75.o: s_75.c i_60.h i_44.h i_46.h i_04.h i_51.h i_33.h i_29.h
+s_76.o: s_76.c i_50.h i_60.h i_56.h i_45.h i_28.h i_42.h i_46.h i_35.h i_44.h i_33.h i_04.h i_29.h i_51.h
+s_77.o: s_77.c
+s_78.o: s_78.c
+s_79.o: s_79.c i_38.h i_44.h i_04.h i_46.h
+s_80.o: s_80.c i_51.h i_33.h
+s_81.o: s_81.c i_52.h i_12.h i_02.h i_53.h i_25.h i_07.h i_33.h i_46.h
+s_82.o: s_82.c i_53.h i_33.h
+s_83.o: s_83.c i_54.h i_33.h
+s_84.o: s_84.c i_56.h
+s_85.o: s_85.c i_51.h i_44.h i_04.h i_46.h
+s_86.o: s_86.c i_04.h i_60.h i_44.h i_46.h i_51.h i_58.h i_33.h i_29.h i_59.h
+s_87.o: s_87.c i_60.h i_51.h i_45.h i_28.h i_56.h i_33.h i_04.h i_29.h

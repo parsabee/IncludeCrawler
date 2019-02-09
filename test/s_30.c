@@ -1,0 +1,13 @@
+#include "i_04.h"
+#include "i_60.h"
+#include "i_20.h"
+#include "i_44.h"
+#include "i_46.h"
+#include "i_32.h"
+#include "i_51.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>

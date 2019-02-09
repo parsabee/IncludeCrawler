@@ -1,0 +1,11 @@
+hashmap.o: hashmap.c hashmap.h iterator.h
+include_crawler.o: include_crawler.c tslinkedlist.h linkedlist.h tshashmap.h hashmap.h tsiterator.h tsorderedset.h orderedset.h tsuqueue.h uqueue.h iterator.h
+iterator.o: iterator.c iterator.h
+linkedlist.o: linkedlist.c linkedlist.h iterator.h
+orderedset.o: orderedset.c orderedset.h iterator.h
+tshashmap.o: tshashmap.c tshashmap.h hashmap.h tsiterator.h iterator.h
+tsiterator.o: tsiterator.c tsiterator.h
+tslinkedlist.o: tslinkedlist.c tslinkedlist.h linkedlist.h tsiterator.h iterator.h
+tsorderedset.o: tsorderedset.c tsorderedset.h orderedset.h tsiterator.h iterator.h
+tsuqueue.o: tsuqueue.c tsuqueue.h uqueue.h tsiterator.h iterator.h
+uqueue.o: uqueue.c uqueue.h linkedlist.h iterator.h

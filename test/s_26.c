@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include <pcap.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <net/ethernet.h>
+#include <pthread.h>
+#include "i_19.h"
+#include "i_46.h"
+#include "i_04.h"

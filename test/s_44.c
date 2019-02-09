@@ -1,0 +1,9 @@
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <pthread.h>
+#include "i_31.h"
+#include "i_09.h"
+#include "i_60.h"
+#include "i_13.h"

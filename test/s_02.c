@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include "i_02.h"
+#include "i_52.h"
+#include <string.h>
+#include <pthread.h>
+#include "i_51.h"
+#include <stdlib.h>
+#include <time.h>
+#include <setjmp.h>
+#include "i_03.h"
+#include "i_41.h"
