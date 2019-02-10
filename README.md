@@ -1,18 +1,18 @@
 To build and install include_crawler, after cloning the repository, run the following commands in shell:  
-'''
+```
 $ autoreconf -if
 $ ./configure
 $ make
 $ make install
-'''  
+``` 
 
 Implementaion by Parsa Bagheri
 Design by Prof. Joe Sventek
 
 # Synopsis
-'''
+```
 Usage: include_crawler [-Idir] ... file.ext ...
-'''
+```
 note that include_crawler works on files with extentions: .c, .C, .cpp, .cxx, .c++, .cc, .y, and .l.
 
 # Include Crawler
