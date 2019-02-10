@@ -1,9 +1,0 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "i_60.h"
-#include "i_51.h"
-#include "i_45.h"
-#include "i_28.h"
-#include "i_56.h"
-#include "i_33.h"
