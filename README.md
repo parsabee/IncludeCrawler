@@ -10,7 +10,7 @@ $ make install
 ```
 Usage: include_crawler [-Idir] ... file.ext ...
 ```
-note that include_crawler works on files with extentions: .c, .C, .cpp, .cxx, .c++, .cc, .y, and .l.
+N.B. include_crawler works on files with extentions: .c, .C, .cpp, .cxx, .c++, .cc, .y, and .l.
 
 # Include Crawler
 
