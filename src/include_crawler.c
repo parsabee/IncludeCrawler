@@ -374,7 +374,7 @@ int getObj(char *afile, char *obj){
 		printf("%s\n", USAGE);
 		return 0;
 	}
-	if(strcmp(afile+i, "cpp") == 0 || strcmp(afile+i, "cxx") || strcmp(afile+i, "cc") || strcmp(afile+i, "c++") || 
+	if(strcmp(afile+i, "cpp") == 0 || strcmp(afile+i, "cxx") == 0 || strcmp(afile+i, "cc") == 0 || strcmp(afile+i, "c++") == 0 || 
 		afile[i] == 'c' || afile[i] == 'C' || afile[i] == 'y' || afile[i] == 'l'){
 		int j;
 		for (j = 0; j < i; j++)
