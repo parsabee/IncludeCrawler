@@ -5,7 +5,21 @@ $ ./configure
 $ make
 $ make install
 ``` 
+Note that you need to have the following packages installed:  
+autotools-dev  
+automake  
 
+If you're on mac use homebrew:
+```
+$ brew install autotools-dev
+$ brew install automake
+```
+If on linux:
+```
+$ sudo apt-get install autotools-dev
+$ sudo apt-get install automake
+```
+or similar package managers.
 # Synopsis
 ```
 Usage: include_crawler [-Idir] ... file.ext ...
