@@ -13,21 +13,17 @@
 #include <string.h>
 #include <pthread.h>
 #include "tslinkedlist.h"
-#include "linkedlist.h"
 #include "tshashmap.h"
-#include "hashmap.h"
 #include "tsiterator.h"
 #include "tsorderedset.h"
-#include "orderedset.h"
 #include "tsuqueue.h"
-#include "uqueue.h"
 
 #define USAGE "Usage: include_crawler [-Idir] ... file.ext ..."
 #define LINE_SIZE 4096
 
 
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER; /*condition variable for threads to knwo when to terminate*/
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER; /*mutex lock to be used with condition variable when waiting*/
+pthread_cond_t cond; /*condition variable for threads to knwo when to terminate*/
+pthread_mutex_t lock; /*mutex lock to be used with condition variable when waiting*/
 
 char **directories; /*array of directory paths*/
 int dir_count; /*holds the count of directories to be searched*/
@@ -76,6 +72,9 @@ void cleanUp(){
 	if(the_table != NULL){
 		the_table->destroy(the_table, freeLL);
 	}
+
+	pthread_mutex_destroy(&lock);
+	pthread_cond_destroy(&cond);
 }
 
 static int scmp(void *a, void *b) {
@@ -192,6 +191,10 @@ int process(char *afile, const TSLinkedList *ll, const TSHashMap *hm, const TSUQ
 							fprintf(stderr, "In function `process' failed to add to work queue\n");
 							return 0;
 						}
+
+						pthread_mutex_lock(&lock);
+						active_threads++; /* more work added */
+						pthread_mutex_unlock(&lock);
 					}
 				}
 			}
@@ -375,7 +378,7 @@ int getObj(char *afile, char *obj){
 		return 0;
 	}
 	if(strcmp(afile+i, "cpp") == 0 || strcmp(afile+i, "cxx") == 0 || strcmp(afile+i, "cc") == 0 || strcmp(afile+i, "c++") == 0 || 
-		afile[i] == 'c' || afile[i] == 'C' || afile[i] == 'y' || afile[i] == 'l'){
+		strcmp(afile+i, "c") == 0 || strcmp(afile+i, "C") == 0 || strcmp(afile+i, "y") == 0 || strcmp(afile+i, "l") == 0){
 		int j;
 		for (j = 0; j < i; j++)
 			obj[j] = afile[j];
@@ -392,7 +395,16 @@ int getObj(char *afile, char *obj){
 void *run(){
 	char *afile;
 	const TSLinkedList *deps;
-	while(active_threads && work_q->size(work_q)){
+	while(work_q->size(work_q)){
+
+		pthread_mutex_lock(&lock);
+		active_threads--;/*thread finished doing its work*/
+		pthread_mutex_unlock(&lock);
+
+		/*now thread is either waiting for more work or if no work is left it's done and it'll terminate*/
+		while(work_q->size(work_q) == 0 && active_threads > 0)
+			pthread_cond_wait(&cond, &lock);
+
 		if(work_q->remove(work_q, (void **)&afile)){
 			if(the_table->get(the_table, afile, (void **)&deps)){
 				if(!process(afile, deps, the_table, work_q))
@@ -400,21 +412,8 @@ void *run(){
 
 			}
 		}
-		else {
-			pthread_mutex_lock(&mutex);
-			active_threads--;/*thread finished doing its work*/
-
-			/*now thread is either waiting for more work or if no work is left it's done and it'll terminate*/
-			while(work_q->size(work_q) == 0 && active_threads > 0)
-				pthread_cond_wait(&cond, &mutex);
 			
-			/*when thread comes here, it makes sure there is no more work in the work queue*/
-			if(work_q->size(work_q) > 0)
-				active_threads++;
-
-			pthread_cond_broadcast(&cond);
-			pthread_mutex_unlock(&mutex);
-		}
+		pthread_cond_broadcast(&cond);
 	}
 	return NULL;
 }
@@ -423,6 +422,9 @@ int main(int argc, char *argv[]){
 
 	directories = getDirectories(argc, argv);
 	if(directories != NULL){
+
+		pthread_mutex_init(&lock, NULL);
+		pthread_cond_init(&cond, NULL);
 
 		work_q = TSUQueue_create(); /*construct the work queue*/
 		if(work_q == NULL){
