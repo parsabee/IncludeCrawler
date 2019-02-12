@@ -11,7 +11,7 @@ automake
 
 If you're on mac use homebrew:
 ```
-$ brew install autotools-dev
+$ brew install autoconf
 $ brew install automake
 ```
 If on linux:
