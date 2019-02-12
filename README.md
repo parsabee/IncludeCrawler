@@ -16,7 +16,7 @@ $ brew install automake
 ```
 If on linux:
 ```
-$ sudo apt-get install autotools-dev
+$ sudo apt-get install autoconf
 $ sudo apt-get install automake
 ```
 or similar package managers.
