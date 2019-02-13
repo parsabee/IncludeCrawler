@@ -1,0 +1,22 @@
+CFLAG= -W -Wall -g -lpthread
+PROGS= include_crawler
+OBJECTS= include_crawler.o tshashmap.o tslinkedlist.o tsorderedset.o orderedset.o hashmap.o iterator.o tsiterator.o linkedlist.o tsuqueue.o uqueue.o
+
+all:$(PROGS)
+include_crawler:include_crawler.o tshashmap.o tslinkedlist.o tsiterator.o tsorderedset.o hashmap.o iterator.o linkedlist.o orderedset.o tsuqueue.o uqueue.o
+	cc -o include_crawler $^
+tsiterator.o:tsiterator.c tsiterator.h
+tsuqueue.o: tsuqueue.c tsiterator.h
+uqueue.o: uqueue.c iterator.h
+tslinkedlist.o:tslinkedlist.c tslinkedlist.h tsiterator.h linkedlist.h
+linkedlist.o:linkedlist.h iterator.o
+tsorderedset.o:tsorderedset.c tsorderedset.h tsiterator.h orderedset.h
+orderedset.o:orderedset.c orderedset.h iterator.h
+tshashmap.o:tshashmap.c tshashmap.h tsiterator.h hashmap.h
+hashmap.o:hashmap.c hashmap.h iterator.h
+iterator.o:iterator.c iterator.h
+include_crawler.o:include_crawler.c tshashmap.h tslinkedlist.h tsorderedset.h tsiterator.h hashmap.h linkedlist.h orderedset.h uqueue.h tsuqueue.h
+
+
+clean:
+	rm $(OBJECTS) $(PROGS)

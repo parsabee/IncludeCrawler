@@ -30,7 +30,6 @@ int dir_count; /*holds the count of directories to be searched*/
 int file_count; /*holds the count of files to be searched*/
 const TSUQueue *work_q = NULL; /*use a queue structure for work queue*/
 const TSHashMap *the_table = NULL;
-const TSIterator *it = NULL;
 int fstart = 1; /*index in the arguments where the files start*/
 int active_threads = 0;
 
