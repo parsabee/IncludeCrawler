@@ -1,10 +1,5 @@
 /*
- * created by Parsa Bagheri
- * this software uses Open Source material,
- * I am grateful to the developers of noted material for their contirbutions to Open Source
- * 
- * The LICENSE and Copyright information can be found in ./IncludeCrawler/src/LICENSE
- * The link to the GitHub repository: https://github.com/jsventek/ADTsv2
+ * Author: Parsa Bagheri
  */
 
 #include <stdlib.h>
